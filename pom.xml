@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mkyong</groupId>
-	<artifactId>spring3-mvc-maven-xml-hello-world</artifactId>
+	<groupId>com.accolite.au.web</groupId>
+	<artifactId>servlet-jsp-spring3-mvc</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>spring3 mvc maven</name>
@@ -11,6 +11,8 @@
 		<jdk.version>1.6</jdk.version>
 		<spring.version>3.2.13.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
+		<servlet.version>4.0.0-b07</servlet.version>
+		<jsp.version>2.3.2-b02</jsp.version>
 	</properties>
 
 	<dependencies>
@@ -27,6 +29,19 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -49,7 +64,7 @@
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<webApp>
-						<contextPath>/spring3</contextPath>
+						<contextPath>/webdemo</contextPath>
 					</webApp>
 				</configuration>
 			</plugin>
@@ -62,10 +77,10 @@
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>true</downloadJavadocs>
 					<wtpversion>2.0</wtpversion>
-					<wtpContextName>spring3</wtpContextName>
+					<wtpContextName>webdemo</wtpContextName>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
