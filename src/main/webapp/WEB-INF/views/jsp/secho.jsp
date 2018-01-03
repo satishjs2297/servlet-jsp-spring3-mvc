@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Echo Servlet JSP</title>
+<title>Spring config Servlet JSP</title>
 </head>
 <body>	
 	<jsp:include page="header.jsp" />
 	<h3>Echo Basic echo page!!</h3>	
-	 <c:forEach var="value" items='${requestScope["numbers"]}'>
+	 <c:forEach var="value" items='${numbers}'>
 	 	<c:if test="${ value % 2 == 0}">
 			count: ${value} <br/>
 	 	</c:if>

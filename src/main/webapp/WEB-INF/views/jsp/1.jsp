@@ -10,5 +10,9 @@
 <body>
 <h4>Child Jsp content!!!!</h4>
 
+Config value:   <%=config.getInitParameter("key") %> </br>
+Context value: <%=application.getInitParameter("p1") %>
+
+
 </body>
 </html>

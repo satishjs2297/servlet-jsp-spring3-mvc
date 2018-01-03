@@ -3,6 +3,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	
+	
 	<listener>
 		<listener-class>com.accolite.au.listeners.AppContextListener</listener-class>
 	</listener>
@@ -17,25 +18,28 @@
 	<filter-mapping>
 		<filter-name>SyncToken-Filter</filter-name>
 		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-
-
-	<!-- Servlet 1 -->
+	</filter-mapping> 
+	
+  <!-- <filter>
+		<filter-name>SyncToken-Filter</filter-name>
+		<filter-class>com.accolite.au.interceptor.SyncTokenFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SyncToken-Filter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>  -->
+	
+	<!-- Servlet -->
 	<servlet>
 		<servlet-name>EchoHttp-Servlet</servlet-name>
 		<servlet-class>com.accolite.au.servlet.EchoHttpServlet</servlet-class>
-		<init-param>
-			<param-name>s-config-p1</param-name>
-			<param-value>s-config-value</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>EchoHttp-Servlet</servlet-name>
 		<url-pattern>/echoHttp.do</url-pattern>
 	</servlet-mapping>
 
-	<!-- Servlet 2 -->
+	<!-- Servlet 2 
 	<servlet>
 		<servlet-name>EchoGeneric-Servlet</servlet-name>
 		<servlet-class>com.accolite.au.servlet.EchoGenericServlet</servlet-class>
@@ -44,7 +48,7 @@
 	<servlet-mapping>
 		<servlet-name>EchoGeneric-Servlet</servlet-name>
 		<url-pattern>/echoGeneric.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>-->
 
 	<!-- Servlet 3 -->
 	<servlet>
@@ -63,6 +67,11 @@
 		<param-name>p1</param-name>
 		<param-value>value1</param-value>
 	</context-param>
+	
+	<context-param>
+		<param-name>url</param-name>
+		<param-value>urlPath</param-value>
+	</context-param>
 
 	<session-config>
 		<!-- Minutes -->
@@ -70,7 +79,7 @@
 	</session-config>
 
 	<!-- Web Security -->
-	<security-constraint>
+	<!-- <security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Wildcard means whole app requires authentication</web-resource-name>
 			<url-pattern>/*</url-pattern>
@@ -82,20 +91,19 @@
 		</auth-constraint>
 
 		<user-data-constraint>
-			<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+			transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE
 			<transport-guarantee>NONE</transport-guarantee>			
 		</user-data-constraint>
 	</security-constraint>
 
 	<login-config>
 		<auth-method>BASIC</auth-method>
-<!-- 		<form-login-config>
-			<form-login-page></form-login-page>
+		<form-login-config>
+			<form-login-page>login.jsp</form-login-page>
 			<form-error-page></form-error-page>
-		</form-login-config>
- -->	
- 	<!-- <realm-name></realm-name> -->
- 	</login-config>
+		</form-login-config>	
+ 	
+ 	</login-config> -->
  	
  	<error-page>
  		<exception-type>java.io.IOException</exception-type>
@@ -114,5 +122,9 @@
 		<servlet-name>spring-web</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>landing.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

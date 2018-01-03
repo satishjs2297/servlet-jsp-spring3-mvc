@@ -23,6 +23,7 @@ public class SyncTokenFilter implements Filter {
 			throws IOException, ServletException {
 		
 		System.out.println("SyncTokenFilter # doFilter # Invoked");
+		
 		if(new Boolean(request.getParameter("isNotAuthenticated"))) {			
 			request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
 		} else {

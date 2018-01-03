@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,10 @@ public class AServlet extends HttpServlet {
 		String reqType = req.getParameter("reqType");
 		if("dispatcher".equals(reqType)) {
 			System.out.println("Invoke BServlet doGet");
-			req.getRequestDispatcher("/b").forward(req, resp);
+			req.setAttribute("userName", req.getServletContext().getInitParameter("url"));
+			Cookie co = new Cookie("Training", "jsp & servlets");
+			resp.addCookie(co);
+			req.getRequestDispatcher("/b").include(req, resp);
 		} else {
 			resp.sendRedirect(req.getContextPath()+"/c");
 		}

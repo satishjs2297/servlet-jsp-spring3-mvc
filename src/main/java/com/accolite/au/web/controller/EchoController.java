@@ -1,5 +1,7 @@
 package com.accolite.au.web.controller;
 
+import java.util.Arrays;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,8 @@ public class EchoController {
 	@RequestMapping(value = "/echo", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "echo";
+		model.addAttribute("numbers", Arrays.asList(1,2,3,4,5));
+		return "secho";
 	}
 
 	@RequestMapping(value = "/echo/{name:.+}", method = RequestMethod.GET)
